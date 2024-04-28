@@ -1,3 +1,9 @@
+import Track from '@/components/Track/Track';
+
 export default function Home() {
-  return <main></main>;
+  return (
+    <main>
+      <Track />
+    </main>
+  );
 }
