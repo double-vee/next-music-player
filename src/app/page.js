@@ -1,11 +1,9 @@
-import Controls from '@/components/Controls/Controls';
-import Track from '@/components/Track/Track';
+import Player from '@/components/Player/Player';
 
 export default function Home() {
   return (
     <main>
-      <Track />
-      <Controls />
+      <Player />
     </main>
   );
 }
