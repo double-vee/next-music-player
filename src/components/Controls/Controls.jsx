@@ -1,6 +1,6 @@
-export default function Player() {
+export default function Controls() {
   return (
-    <div className="player">
+    <div className="controls-wrapper">
       <div className="time-control">
         <p>00:00</p>
         <input type="range" />
