@@ -1,18 +1,21 @@
+'use client';
+
 import Image from 'next/image';
 
-export default function Track() {
+export default function Track({ currentTrack }) {
   return (
     <div className="track-wrapper">
       <div className="image-wrapper">
         <Image
-          src="https://freemusicarchive.org/image?file=images%2Falbums%2FFields_Ohio_-_H_I_N_T_E_R_L_A_N_D_-_2015102170051180.jpg&width=290&height=290&type=image"
-          alt=""
+          src={currentTrack.cover}
+          alt={currentTrack.title}
           width={200}
           height={200}
+          priority={true}
         />
       </div>
-      <h2>Urban Coyote</h2>
-      <h3>Fields Ohio</h3>
+      <h2>{currentTrack.title}</h2>
+      <h3>{currentTrack.artist}</h3>
     </div>
   );
 }
