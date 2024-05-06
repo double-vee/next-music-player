@@ -9,11 +9,11 @@ export default function Controls({ currentTrack }) {
   const handlePlay = () => {
     if (!isPlaying) {
       audioRef.current.play();
-      setIsPlaying(true);
     } else {
       audioRef.current.pause();
-      setIsPlaying(false);
     }
+
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -36,6 +36,7 @@ export default function Controls({ currentTrack }) {
       <audio
         ref={audioRef}
         src={currentTrack.audio}
+        onEnded={() => setIsPlaying(false)}
       ></audio>
     </div>
   );
