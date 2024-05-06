@@ -13,7 +13,7 @@ export default function Player() {
   return (
     <section>
       <Track currentTrack={currentTrack} />
-      <Controls />
+      <Controls currentTrack={currentTrack} />
     </section>
   );
 }
