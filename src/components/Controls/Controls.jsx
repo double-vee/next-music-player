@@ -1,11 +1,19 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Controls({ currentTrack }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const audioRef = useRef();
 
   const handlePlay = () => {
-    audioRef.current.play();
+    if (!isPlaying) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
   };
 
   return (
@@ -21,7 +29,7 @@ export default function Controls({ currentTrack }) {
           className="play"
           onClick={handlePlay}
         >
-          play
+          {isPlaying ? 'pause' : 'play'}
         </button>
         <button className="skip-forward">forward</button>
       </div>
