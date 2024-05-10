@@ -5,6 +5,11 @@ import { useRef, useState } from 'react';
 export default function Controls({ currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const [timeData, setTimeData] = useState({
+    currentTime: null,
+    duration: null,
+  });
+
   const audioRef = useRef();
 
   const handlePlay = () => {
@@ -17,12 +22,20 @@ export default function Controls({ currentTrack }) {
     setIsPlaying(!isPlaying);
   };
 
+  const handleTimeUpdate = (e) => {
+    setTimeData({
+      ...timeData,
+      currentTime: e.target.currentTime,
+      duration: e.target.duration,
+    });
+  };
+
   return (
     <div className="controls-wrapper">
       <div className="time-control">
-        <p>00:00</p>
+        <p>{timeData.currentTime ? timeData.currentTime : '00:00'}</p>
         <input type="range" />
-        <p>00:00</p>
+        <p>{timeData.duration ? timeData.duration : '00:00'}</p>
       </div>
       <div className="play-control">
         <button className="btn skip-back">
@@ -42,6 +55,7 @@ export default function Controls({ currentTrack }) {
         ref={audioRef}
         src={currentTrack.audio}
         onEnded={() => setIsPlaying(false)}
+        onTimeUpdate={handleTimeUpdate}
       ></audio>
     </div>
   );
