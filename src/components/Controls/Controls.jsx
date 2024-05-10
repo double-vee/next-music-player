@@ -1,4 +1,5 @@
 'use client';
+import { RxPlay, RxPause, RxTrackNext, RxTrackPrevious } from 'react-icons/rx';
 import { useRef, useState } from 'react';
 
 export default function Controls({ currentTrack }) {
@@ -24,14 +25,18 @@ export default function Controls({ currentTrack }) {
         <p>00:00</p>
       </div>
       <div className="play-control">
-        <button className="skip-back">back</button>
+        <button className="btn skip-back">
+          <RxTrackPrevious />
+        </button>
         <button
-          className="play"
+          className="btn play"
           onClick={handlePlay}
         >
-          {isPlaying ? 'pause' : 'play'}
+          {isPlaying ? <RxPause /> : <RxPlay />}
         </button>
-        <button className="skip-forward">forward</button>
+        <button className="btn skip-forward">
+          <RxTrackNext />
+        </button>
       </div>
       <audio
         ref={audioRef}

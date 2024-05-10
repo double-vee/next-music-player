@@ -9,8 +9,8 @@ export default function Track({ currentTrack }) {
         <Image
           src={currentTrack.cover}
           alt={currentTrack.title}
-          width={200}
-          height={200}
+          width={290}
+          height={290}
           priority={true}
         />
       </div>
