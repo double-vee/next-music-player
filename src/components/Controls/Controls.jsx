@@ -8,8 +8,8 @@ export default function Controls({ currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const [timeData, setTimeData] = useState({
-    currentTime: null,
-    duration: null,
+    currentTime: 0,
+    duration: 0,
   });
 
   const audioRef = useRef();
@@ -38,14 +38,27 @@ export default function Controls({ currentTrack }) {
     });
   };
 
+  const handleChange = (e) => {
+    audioRef.current.currentTime = +e.target.value;
+
+    setTimeData({
+      ...timeData,
+      currentTime: +e.target.value,
+    });
+  };
+
   return (
     <div className="controls-wrapper">
       <div className="time-control">
-        <p>
-          {timeData.currentTime ? formatTime(timeData.currentTime) : '0:00'}
-        </p>
-        <input type="range" />
-        <p>{timeData.duration ? formatTime(timeData.duration) : '0:00'}</p>
+        <p>{formatTime(timeData.currentTime)}</p>
+        <input
+          type="range"
+          min={0}
+          max={timeData.duration}
+          value={timeData.currentTime}
+          onChange={handleChange}
+        />
+        <p>{formatTime(timeData.duration)}</p>
       </div>
       <div className="play-control">
         <button className="btn skip-back">
