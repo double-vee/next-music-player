@@ -2,6 +2,8 @@
 import { RxPlay, RxPause, RxTrackNext, RxTrackPrevious } from 'react-icons/rx';
 import { useEffect, useRef, useState } from 'react';
 
+import { formatTime } from '@/helpers/helpers';
+
 export default function Controls({ currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -39,9 +41,11 @@ export default function Controls({ currentTrack }) {
   return (
     <div className="controls-wrapper">
       <div className="time-control">
-        <p>{timeData.currentTime ? timeData.currentTime : '00:00'}</p>
+        <p>
+          {timeData.currentTime ? formatTime(timeData.currentTime) : '0:00'}
+        </p>
         <input type="range" />
-        <p>{timeData.duration ? timeData.duration : '00:00'}</p>
+        <p>{timeData.duration ? formatTime(timeData.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
         <button className="btn skip-back">
