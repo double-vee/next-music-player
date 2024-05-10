@@ -1,6 +1,6 @@
-@use '../components/Track/track';
-@use '../components/Controls/controls';
-@use '../components/AppWrapper/app-wrapper';
+@use './track';
+@use './controls';
+@use './app-wrapper';
 @use './variables' as *;
 
 *,
