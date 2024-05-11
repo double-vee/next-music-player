@@ -1,0 +1,23 @@
+@use './variables' as *;
+
+.library {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: fit-content;
+  min-height: 100%;
+  padding: 2rem;
+  background-color: $color-dark-transparent;
+  backdrop-filter: blur(4px);
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+}
+
+.library-items {
+  list-style: none;
+}
