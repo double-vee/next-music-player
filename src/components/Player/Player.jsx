@@ -17,7 +17,10 @@ export default function Player() {
         <Track currentTrack={currentTrack} />
         <Controls currentTrack={currentTrack} />
       </section>
-      <Library tracks={tracks} />
+      <Library
+        tracks={tracks}
+        setCurrentTrack={setCurrentTrack}
+      />
     </>
   );
 }

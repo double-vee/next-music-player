@@ -29,12 +29,14 @@
   list-style: none;
 }
 
-.library-item {
+.library-item button {
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
   padding: 1rem 2rem;
-  cursor: pointer;
+  outline: none;
+  text-align: left;
 
   &:hover,
   &:focus-visible {
