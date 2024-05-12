@@ -2,6 +2,7 @@
 import { RxPlay, RxPause, RxTrackNext, RxTrackPrevious } from 'react-icons/rx';
 import { useEffect, useState } from 'react';
 
+import Audio from '@/components/Audio/Audio';
 import { formatTime } from '@/helpers/helpers';
 
 export default function Controls({
@@ -75,12 +76,12 @@ export default function Controls({
           <RxTrackNext />
         </button>
       </div>
-      <audio
-        ref={audioRef}
+      <Audio
         src={currentTrack.audio}
+        ref={audioRef}
         onEnded={() => setIsPlaying(false)}
         onTimeUpdate={handleTimeUpdate}
-      ></audio>
+      />
     </div>
   );
 }
