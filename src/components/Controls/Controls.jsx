@@ -1,24 +1,25 @@
 'use client';
 import { RxPlay, RxPause, RxTrackNext, RxTrackPrevious } from 'react-icons/rx';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { formatTime } from '@/helpers/helpers';
 
-export default function Controls({ currentTrack }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-
+export default function Controls({
+  audioRef,
+  currentTrack,
+  isPlaying,
+  setIsPlaying,
+}) {
   const [timeData, setTimeData] = useState({
     currentTime: 0,
     duration: 0,
   });
 
-  const audioRef = useRef();
-
   useEffect(() => {
     const duration = audioRef.current.duration;
 
     setTimeData((prev) => ({ ...prev, duration }));
-  }, []);
+  }, [audioRef]);
 
   const handlePlay = () => {
     if (!isPlaying) {
