@@ -50,3 +50,22 @@ svg {
   max-width: 100%;
   height: auto;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $color-gray transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $color-gray;
+  border-radius: 20px;
+  border: transparent;
+}

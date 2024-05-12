@@ -1,17 +1,24 @@
 @use './variables' as *;
+@use './mixin.scss';
 
 .library {
   position: fixed;
   top: 0;
   left: 0;
-  width: fit-content;
-  min-height: 100%;
-  padding: 2rem;
+  bottom: 0;
+  width: 100%;
+  padding-top: 2rem;
   background-color: $color-dark-transparent;
   backdrop-filter: blur(4px);
+  overflow-y: scroll;
+
+  @include mixin.m {
+    width: 25rem;
+  }
 
   h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    padding-inline: 2rem;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1;
@@ -20,4 +27,47 @@
 
 .library-items {
   list-style: none;
+}
+
+.library-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-gray;
+  }
+
+  .image-wrapper {
+    flex: 0 0 auto;
+    width: 60px;
+
+    @include mixin.m {
+      width: 80px;
+    }
+
+    img {
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+  }
+
+  .description {
+    line-height: 1.4;
+
+    h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    h4 {
+      font-size: 0.875rem;
+      font-weight: 300;
+    }
+  }
 }
