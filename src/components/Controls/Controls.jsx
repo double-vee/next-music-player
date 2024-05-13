@@ -56,11 +56,11 @@ export default function Controls({
         <input
           type="range"
           min={0}
-          max={timeData.duration}
+          max={timeData.duration || 0}
           value={timeData.currentTime}
           onChange={handleChange}
         />
-        <p>{formatTime(timeData.duration)}</p>
+        <p>{timeData.duration ? formatTime(timeData.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
         <button className="btn skip-back">
@@ -81,6 +81,7 @@ export default function Controls({
         ref={audioRef}
         onEnded={() => setIsPlaying(false)}
         onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleTimeUpdate}
       />
     </div>
   );
