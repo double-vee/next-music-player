@@ -29,6 +29,7 @@ export default function Player() {
       <Library
         audioRef={audioRef}
         tracks={tracks}
+        setTracks={setTracks}
         setCurrentTrack={setCurrentTrack}
         isPlaying={isPlaying}
       />

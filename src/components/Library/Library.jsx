@@ -3,6 +3,7 @@ import LibraryItem from '@/components/LibraryItem/LibraryItem';
 export default function Library({
   audioRef,
   tracks,
+  setTracks,
   setCurrentTrack,
   isPlaying,
 }) {
@@ -18,6 +19,8 @@ export default function Library({
             key={track.id}
             audioRef={audioRef}
             track={track}
+            tracks={tracks}
+            setTracks={setTracks}
             setCurrentTrack={setCurrentTrack}
             isPlaying={isPlaying}
           />

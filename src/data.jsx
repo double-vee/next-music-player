@@ -10,7 +10,7 @@ export const data = () => {
       cover:
         'https://freemusicarchive.org/image/?file=images%2Ftracks%2FTrack_-_2015102170235526&width=290&height=290&type=track',
       id: nanoid(),
-      active: false,
+      active: true,
       license: 'Attribution-ShareAlike 4.0 International',
       licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
     },

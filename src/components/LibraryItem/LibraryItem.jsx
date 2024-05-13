@@ -3,19 +3,35 @@ import Image from 'next/image';
 export default function LibraryItem({
   audioRef,
   track,
+  tracks,
+  setTracks,
   setCurrentTrack,
   isPlaying,
 }) {
   const handleSelectTrack = async () => {
     await setCurrentTrack(track);
+
     if (isPlaying) {
       audioRef.current.play();
     }
+
+    const nextTracks = tracks.map((item) => {
+      if (item.id === track.id) {
+        return { ...item, active: true };
+      } else {
+        return { ...item, active: false };
+      }
+    });
+
+    setTracks(nextTracks);
   };
 
   return (
     <li className="library-item">
-      <button onClick={handleSelectTrack}>
+      <button
+        className={track.active ? 'selected' : ''}
+        onClick={handleSelectTrack}
+      >
         <div className="image-wrapper">
           <Image
             src={track.cover}
