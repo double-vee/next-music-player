@@ -8,6 +8,9 @@ import { formatTime } from '@/helpers/helpers';
 export default function Controls({
   audioRef,
   currentTrack,
+  setCurrentTrack,
+  tracks,
+  setTracks,
   isPlaying,
   setIsPlaying,
 }) {
@@ -30,6 +33,34 @@ export default function Controls({
     }
 
     setIsPlaying(!isPlaying);
+  };
+
+  const getCurrentIndex = () => {
+    return tracks.indexOf(tracks.find((item) => item.active === true));
+  };
+
+  const handleSkipBack = async () => {
+    const currentIndex = getCurrentIndex();
+
+    if (currentIndex === 0) {
+      return;
+    }
+
+    const prevTrack = tracks[currentIndex - 1];
+
+    await setCurrentTrack({ ...prevTrack, active: true });
+
+    const nextTracks = tracks.map((item) => {
+      return item.id === prevTrack.id
+        ? { ...item, active: true }
+        : { ...item, active: false };
+    });
+
+    setTracks(nextTracks);
+  };
+
+  const handleSkipForward = () => {
+    console.log('fwd');
   };
 
   const handleTimeUpdate = (e) => {
@@ -63,7 +94,10 @@ export default function Controls({
         <p>{timeData.duration ? formatTime(timeData.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
-        <button className="btn skip-back">
+        <button
+          className="btn skip-back"
+          onClick={handleSkipBack}
+        >
           <RxTrackPrevious />
         </button>
         <button
@@ -72,7 +106,10 @@ export default function Controls({
         >
           {isPlaying ? <RxPause /> : <RxPlay />}
         </button>
-        <button className="btn skip-forward">
+        <button
+          className="btn skip-forward"
+          onClick={handleSkipForward}
+        >
           <RxTrackNext />
         </button>
       </div>

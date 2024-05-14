@@ -9,7 +9,7 @@ export default function LibraryItem({
   isPlaying,
 }) {
   const handleSelectTrack = async () => {
-    await setCurrentTrack(track);
+    await setCurrentTrack({ ...track, active: true });
 
     if (isPlaying) {
       audioRef.current.play();

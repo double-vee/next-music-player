@@ -29,6 +29,9 @@ export default function Player() {
           <Controls
             audioRef={audioRef}
             currentTrack={currentTrack}
+            setCurrentTrack={setCurrentTrack}
+            tracks={tracks}
+            setTracks={setTracks}
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
           />
