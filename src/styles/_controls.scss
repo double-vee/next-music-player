@@ -17,7 +17,7 @@
     width: 100%;
     height: 2px;
     border-radius: 4px;
-    background-color: $color-light;
+    background-color: $text;
     appearance: none;
     outline: none;
     cursor: pointer;
@@ -26,25 +26,25 @@
       appearance: none;
       width: 16px;
       height: 16px;
-      border: 2px solid $color-light;
+      border: 2px solid $text;
       border-radius: 50%;
-      background-color: $color-dark;
+      background-color: $background;
     }
 
     &::-moz-range-thumb {
       width: 16px;
       height: 16px;
-      border: 2px solid $color-light;
+      border: 2px solid $text;
       border-radius: 50%;
-      background-color: $color-dark;
+      background-color: $background;
     }
 
     &:focus-visible::-webkit-slider-thumb {
-      background-color: $color-light;
+      background-color: $text;
     }
 
     &:focus-visible::-moz-range-thumb {
-      background-color: $color-light;
+      background-color: $text;
     }
   }
 
@@ -72,10 +72,10 @@
     outline: none;
 
     &:focus-visible {
-      background-color: $color-light;
+      background-color: $text;
 
       svg {
-        color: $color-dark;
+        color: $background;
       }
     }
 

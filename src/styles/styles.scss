@@ -1,6 +1,7 @@
+@use './app-wrapper';
+@use './nav';
 @use './track';
 @use './controls';
-@use './app-wrapper';
 @use './library';
 @use './variables' as *;
 
@@ -19,8 +20,8 @@ body {
 }
 
 body {
-  background: $color-dark;
-  color: $color-light;
+  background: $background;
+  color: $text;
   font-family: sans-serif;
   line-height: 1.5;
 }
@@ -53,7 +54,8 @@ svg {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: $color-gray transparent;
+  scrollbar-color: $primary transparent;
+  scrollbar-gutter: stable;
 }
 
 *::-webkit-scrollbar {
@@ -65,7 +67,7 @@ svg {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: $color-gray;
+  background-color: $primary;
   border-radius: 20px;
   border: transparent;
 }

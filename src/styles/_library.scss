@@ -2,24 +2,39 @@
 @use './mixin.scss';
 
 .library {
+  $padding-left: 0.75rem;
+
   position: fixed;
-  top: 0;
+  top: 4.5rem;
   left: 0;
   bottom: 0;
   width: 100%;
-  padding-top: 2rem;
-  background-color: $color-dark-transparent;
+  padding-top: 1rem;
+  padding-left: $padding-left;
+  background-color: $background-transparent;
   backdrop-filter: blur(4px);
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-color: $secondary transparent;
 
   @include mixin.m {
+    top: 0;
     width: 25rem;
+    padding-top: 2.275rem;
   }
 
-  h2 {
+  &::-webkit-scrollbar-thumb {
+    background-color: $secondary;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .library-title {
     margin-bottom: 1rem;
-    padding-inline: 2rem;
-    font-size: 1.5rem;
+    margin-left: calc($padding-wrapper + $padding-header - $padding-left);
+    color: $secondary;
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 1;
   }
@@ -35,14 +50,19 @@
     align-items: center;
     gap: 1rem;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem;
+    border: 1px solid transparent;
     outline: none;
     text-align: left;
 
-    &.selected,
+    &.selected {
+      border: 1px solid $accent;
+    }
+
     &:hover,
     &:focus-visible {
-      background-color: $color-gray;
+      background-color: $accent;
+      color: $background;
     }
 
     .image-wrapper {
@@ -71,7 +91,7 @@
 
       h4 {
         font-size: 0.875rem;
-        font-weight: 300;
+        font-weight: 400;
       }
     }
   }

@@ -6,10 +6,11 @@ export default function Library({
   setTracks,
   setCurrentTrack,
   isPlaying,
+  libraryStatus,
 }) {
   return (
-    <section className="library">
-      <h2>Library</h2>
+    <aside className={`library ${libraryStatus ? '' : 'hidden'}`}>
+      <h2 className="library-title">Tracks</h2>
       <ul
         className="library-items"
         role="list"
@@ -26,6 +27,6 @@ export default function Library({
           />
         ))}
       </ul>
-    </section>
+    </aside>
   );
 }
