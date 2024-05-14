@@ -8,7 +8,7 @@ export default function LibraryItem({
   setCurrentTrack,
   isPlaying,
 }) {
-  const handleSelectTrack = async () => {
+  const selectTrack = async () => {
     await setCurrentTrack({ ...track, active: true });
 
     if (isPlaying) {
@@ -30,7 +30,7 @@ export default function LibraryItem({
     <li className="library-item">
       <button
         className={track.active ? 'selected' : ''}
-        onClick={handleSelectTrack}
+        onClick={selectTrack}
       >
         <div className="image-wrapper">
           <Image

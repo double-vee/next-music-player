@@ -25,7 +25,7 @@ export default function Controls({
     setTimeData((prev) => ({ ...prev, duration }));
   }, [audioRef]);
 
-  const handlePlay = () => {
+  const play = () => {
     if (!isPlaying) {
       audioRef.current.play();
     } else {
@@ -35,12 +35,12 @@ export default function Controls({
     setIsPlaying(!isPlaying);
   };
 
-  const getCurrentIndex = () => {
+  const getActiveTrackIndex = () => {
     return tracks.indexOf(tracks.find((item) => item.active === true));
   };
 
-  const handleSkipBack = async () => {
-    const currentIndex = getCurrentIndex();
+  const skipBack = async () => {
+    const currentIndex = getActiveTrackIndex();
 
     if (currentIndex === 0) {
       return;
@@ -49,6 +49,10 @@ export default function Controls({
     const prevTrack = tracks[currentIndex - 1];
 
     await setCurrentTrack({ ...prevTrack, active: true });
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
 
     const nextTracks = tracks.map((item) => {
       return item.id === prevTrack.id
@@ -59,11 +63,31 @@ export default function Controls({
     setTracks(nextTracks);
   };
 
-  const handleSkipForward = () => {
-    console.log('fwd');
+  const skipForward = async () => {
+    const currentIndex = getActiveTrackIndex();
+
+    if (currentIndex === tracks.length - 1) {
+      return;
+    }
+
+    const nextTrack = tracks[currentIndex + 1];
+
+    await setCurrentTrack({ ...nextTrack, active: true });
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+
+    const nextTracks = tracks.map((item) => {
+      return item.id === nextTrack.id
+        ? { ...item, active: true }
+        : { ...item, active: false };
+    });
+
+    setTracks(nextTracks);
   };
 
-  const handleTimeUpdate = (e) => {
+  const updateTime = (e) => {
     setTimeData({
       ...timeData,
       currentTime: e.target.currentTime,
@@ -71,7 +95,7 @@ export default function Controls({
     });
   };
 
-  const handleChange = (e) => {
+  const setTime = (e) => {
     audioRef.current.currentTime = +e.target.value;
 
     setTimeData({
@@ -89,26 +113,26 @@ export default function Controls({
           min={0}
           max={timeData.duration || 0}
           value={timeData.currentTime}
-          onChange={handleChange}
+          onChange={setTime}
         />
         <p>{timeData.duration ? formatTime(timeData.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
         <button
           className="btn skip-back"
-          onClick={handleSkipBack}
+          onClick={skipBack}
         >
           <RxTrackPrevious />
         </button>
         <button
           className="btn play"
-          onClick={handlePlay}
+          onClick={play}
         >
           {isPlaying ? <RxPause /> : <RxPlay />}
         </button>
         <button
           className="btn skip-forward"
-          onClick={handleSkipForward}
+          onClick={skipForward}
         >
           <RxTrackNext />
         </button>
@@ -117,8 +141,8 @@ export default function Controls({
         src={currentTrack.audio}
         ref={audioRef}
         onEnded={() => setIsPlaying(false)}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleTimeUpdate}
+        onTimeUpdate={updateTime}
+        onLoadedMetadata={updateTime}
       />
     </div>
   );
