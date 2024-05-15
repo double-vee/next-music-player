@@ -13,38 +13,51 @@
   align-items: center;
   gap: 0.5rem;
 
-  input {
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
     width: 100%;
-    height: 2px;
-    border-radius: 4px;
-    background-color: $text;
-    appearance: none;
-    outline: none;
-    cursor: pointer;
+    overflow: clip;
+    border-radius: 16px;
 
-    &::-webkit-slider-thumb {
+    .progress-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-color: $text;
+      pointer-events: none;
+    }
+
+    input {
+      width: 100%;
+      height: 10px;
+      background-color: $accent;
       appearance: none;
-      width: 16px;
-      height: 16px;
-      border: 2px solid $text;
-      border-radius: 50%;
-      background-color: $background;
-    }
+      outline: none;
+      cursor: pointer;
 
-    &::-moz-range-thumb {
-      width: 16px;
-      height: 16px;
-      border: 2px solid $text;
-      border-radius: 50%;
-      background-color: $background;
-    }
+      &::-webkit-slider-thumb {
+        appearance: none;
+        width: 1px;
+        height: 10px;
+        background-color: $accent;
+      }
 
-    &:focus-visible::-webkit-slider-thumb {
-      background-color: $text;
-    }
+      &::-moz-range-thumb {
+        appearance: none;
+        width: 1px;
+        height: 10px;
+        border: none;
+        border-radius: 0;
+        background-color: $accent;
+      }
 
-    &:focus-visible::-moz-range-thumb {
-      background-color: $text;
+      &:focus-visible + .progress-indicator {
+        background-color: $secondary;
+      }
     }
   }
 

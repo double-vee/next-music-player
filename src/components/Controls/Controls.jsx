@@ -17,6 +17,7 @@ export default function Controls({
   const [timeData, setTimeData] = useState({
     currentTime: 0,
     duration: 0,
+    progress: 0,
   });
 
   useEffect(() => {
@@ -83,10 +84,21 @@ export default function Controls({
   };
 
   const updateTime = (e) => {
+    let progress = 0;
+    let duration = e.target.duration;
+    let currentTime = e.target.currentTime;
+
+    if (typeof duration === 'number' && duration > 0) {
+      progress = Math.floor((currentTime / duration) * 100);
+    }
+
+    console.log(duration, currentTime, progress);
+
     setTimeData({
       ...timeData,
-      currentTime: e.target.currentTime,
-      duration: e.target.duration,
+      currentTime,
+      duration,
+      progress,
     });
   };
 
@@ -103,13 +115,23 @@ export default function Controls({
     <div className="controls-wrapper">
       <div className="time-control">
         <p>{formatTime(timeData.currentTime)}</p>
-        <input
-          type="range"
-          min={0}
-          max={timeData.duration || 0}
-          value={timeData.currentTime}
-          onChange={setTime}
-        />
+        <div className="input-wrapper">
+          <input
+            type="range"
+            min={0}
+            max={timeData.duration || 0}
+            value={timeData.currentTime}
+            onChange={setTime}
+          />
+          <div
+            className="progress-indicator"
+            style={{
+              transform: `translateX(${
+                timeData.progress < 99 ? timeData.progress : 100
+              }%)`,
+            }}
+          ></div>
+        </div>
         <p>{timeData.duration ? formatTime(timeData.duration) : '0:00'}</p>
       </div>
       <div className="play-control">
