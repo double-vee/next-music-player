@@ -15,6 +15,8 @@
   backdrop-filter: blur(4px);
   overflow-y: auto;
   scrollbar-color: $secondary transparent;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
 
   @include mixin.m {
     top: 0;
@@ -22,12 +24,12 @@
     padding-top: 2.275rem;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: $secondary;
+  &.active {
+    transform: translateX(0);
   }
 
-  &.hidden {
-    display: none;
+  &::-webkit-scrollbar-thumb {
+    background-color: $secondary;
   }
 
   .library-title {

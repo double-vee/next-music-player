@@ -9,7 +9,7 @@ export default function Library({
   libraryStatus,
 }) {
   return (
-    <aside className={`library ${libraryStatus ? '' : 'hidden'}`}>
+    <aside className={`library ${libraryStatus ? 'active' : ''}`}>
       <h2 className="library-title">Tracks</h2>
       <ul
         className="library-items"
