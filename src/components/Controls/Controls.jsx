@@ -36,17 +36,28 @@ export default function Controls({
   };
 
   const getActiveTrackIndex = () => {
-    return tracks.indexOf(tracks.find((item) => item.active === true));
+    return tracks.findIndex((item) => item.active === true);
+  };
+
+  const updateTrackList = (activeTrack) => {
+    const nextTracks = tracks.map((item) => {
+      return item.id === activeTrack.id
+        ? { ...item, active: true }
+        : { ...item, active: false };
+    });
+
+    setTracks(nextTracks);
   };
 
   const skipBack = async () => {
-    const currentIndex = getActiveTrackIndex();
+    let currentIndex = getActiveTrackIndex();
+    let prevTrack;
 
     if (currentIndex === 0) {
-      return;
+      prevTrack = tracks.at(-1);
+    } else {
+      prevTrack = tracks[currentIndex - 1];
     }
-
-    const prevTrack = tracks[currentIndex - 1];
 
     await setCurrentTrack({ ...prevTrack, active: true });
 
@@ -54,23 +65,13 @@ export default function Controls({
       audioRef.current.play();
     }
 
-    const nextTracks = tracks.map((item) => {
-      return item.id === prevTrack.id
-        ? { ...item, active: true }
-        : { ...item, active: false };
-    });
-
-    setTracks(nextTracks);
+    updateTrackList(prevTrack);
   };
 
   const skipForward = async () => {
     const currentIndex = getActiveTrackIndex();
 
-    if (currentIndex === tracks.length - 1) {
-      return;
-    }
-
-    const nextTrack = tracks[currentIndex + 1];
+    const nextTrack = tracks[(currentIndex + 1) % tracks.length];
 
     await setCurrentTrack({ ...nextTrack, active: true });
 
@@ -78,13 +79,7 @@ export default function Controls({
       audioRef.current.play();
     }
 
-    const nextTracks = tracks.map((item) => {
-      return item.id === nextTrack.id
-        ? { ...item, active: true }
-        : { ...item, active: false };
-    });
-
-    setTracks(nextTracks);
+    updateTrackList(nextTrack);
   };
 
   const updateTime = (e) => {
