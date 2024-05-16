@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 
+import AppWrapper from '@/components/AppWrapper/AppWrapper';
 import Nav from '@/components/Nav/Nav';
 import Controls from '@/components/Controls/Controls';
 import Track from '@/components/Track/Track';
@@ -19,24 +20,34 @@ export default function Player() {
 
   return (
     <>
-      <Nav
-        libraryStatus={libraryStatus}
-        setLibraryStatus={setLibraryStatus}
-      />
-      <main>
-        <section>
-          <Track currentTrack={currentTrack} />
-          <Controls
-            audioRef={audioRef}
-            currentTrack={currentTrack}
-            setCurrentTrack={setCurrentTrack}
-            tracks={tracks}
-            setTracks={setTracks}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-          />
-        </section>
-      </main>
+      <AppWrapper
+        style={
+          libraryStatus
+            ? undefined
+            : {
+                marginLeft: '0',
+              }
+        }
+      >
+        <Nav
+          libraryStatus={libraryStatus}
+          setLibraryStatus={setLibraryStatus}
+        />
+        <main>
+          <section>
+            <Track currentTrack={currentTrack} />
+            <Controls
+              audioRef={audioRef}
+              currentTrack={currentTrack}
+              setCurrentTrack={setCurrentTrack}
+              tracks={tracks}
+              setTracks={setTracks}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+            />
+          </section>
+        </main>
+      </AppWrapper>
       <Library
         audioRef={audioRef}
         tracks={tracks}

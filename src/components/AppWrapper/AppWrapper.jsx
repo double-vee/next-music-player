@@ -1,3 +1,10 @@
-export default function AppWrapper({ children }) {
-  return <div className="app-wrapper">{children}</div>;
+export default function AppWrapper({ children, style }) {
+  return (
+    <div
+      className="app-wrapper"
+      style={style}
+    >
+      {children}
+    </div>
+  );
 }

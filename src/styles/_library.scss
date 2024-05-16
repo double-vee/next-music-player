@@ -8,7 +8,7 @@
   top: 4.5rem;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: $library-width-s;
   padding-top: 1rem;
   padding-left: $padding-left;
   background-color: $background-transparent;
@@ -20,8 +20,12 @@
 
   @include mixin.m {
     top: 0;
-    width: 25rem;
+    width: $library-width-m;
     padding-top: 2.275rem;
+  }
+
+  @include mixin.l {
+    width: $library-width-l;
   }
 
   &.active {

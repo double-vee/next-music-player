@@ -1,8 +1,18 @@
 @use './variables' as *;
+@use './mixin';
 
 .app-wrapper {
   min-height: 100%;
   display: grid;
   gap: 1rem;
   padding: $padding-wrapper;
+  transition: margin-left 0.5s ease;
+
+  @include mixin.m {
+    margin-left: $library-width-m;
+  }
+
+  @include mixin.l {
+    margin-left: $library-width-l;
+  }
 }
