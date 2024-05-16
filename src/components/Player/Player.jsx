@@ -56,6 +56,7 @@ export default function Player() {
         setCurrentTrack={setCurrentTrack}
         isPlaying={isPlaying}
         libraryStatus={libraryStatus}
+        setLibraryStatus={setLibraryStatus}
       />
     </>
   );

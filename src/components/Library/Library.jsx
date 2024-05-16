@@ -1,3 +1,5 @@
+import { RxCross1 } from 'react-icons/rx';
+
 import LibraryItem from '@/components/LibraryItem/LibraryItem';
 
 export default function Library({
@@ -7,10 +9,19 @@ export default function Library({
   setCurrentTrack,
   isPlaying,
   libraryStatus,
+  setLibraryStatus,
 }) {
   return (
     <aside className={`library ${libraryStatus ? 'active' : ''}`}>
-      <h2 className="library-title">Tracks</h2>
+      <header className="library-header">
+        <h2 className="library-title">Tracks</h2>
+        <button
+          className="icon-wrapper"
+          onClick={() => setLibraryStatus(false)}
+        >
+          <RxCross1 />
+        </button>
+      </header>
       <ul
         className="library-items"
         role="list"

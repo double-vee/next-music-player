@@ -13,7 +13,7 @@ export default function Nav({ audioRef, libraryStatus, setLibraryStatus }) {
   };
 
   return (
-    <header>
+    <header className="app-header">
       <nav>
         <h1 className="title">TrueAudio</h1>
         <div className="btn-wrapper">
