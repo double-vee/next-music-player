@@ -1,7 +1,7 @@
 @use './variables' as *;
 
 header {
-  padding-left: $padding-header;
+  padding: $padding-header;
   line-height: 1;
 
   nav {
@@ -9,20 +9,26 @@ header {
     align-items: baseline;
 
     .title {
+      margin-right: auto;
+      padding-inline: $padding-header;
       font-size: 1.25rem;
       font-weight: 600;
     }
 
-    .library-toggle {
-      margin-left: auto;
-      padding: 1rem;
-      font-size: 1rem;
-      font-weight: 500;
+    .btn-wrapper {
+      .nav-btn {
+        padding: $padding-header;
+        font-size: 1rem;
+        font-weight: 400;
 
-      &:hover,
-      &:focus-visible {
-        color: $accent;
-        outline: none;
+        &:not(:last-of-type) {
+          margin-right: 0.25rem;
+        }
+
+        &:hover,
+        &:focus-visible {
+          color: $accent;
+        }
       }
     }
   }

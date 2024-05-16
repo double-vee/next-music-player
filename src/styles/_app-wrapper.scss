@@ -8,10 +8,6 @@
   padding: $padding-wrapper;
   transition: margin-left 0.5s ease;
 
-  @include mixin.m {
-    margin-left: $library-width-m;
-  }
-
   @include mixin.l {
     margin-left: $library-width-l;
   }

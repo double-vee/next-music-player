@@ -19,13 +19,13 @@
   transition: transform 0.5s ease;
 
   @include mixin.m {
-    top: 0;
     width: $library-width-m;
-    padding-top: 2.275rem;
   }
 
   @include mixin.l {
+    top: 0;
     width: $library-width-l;
+    padding-top: 2.275rem;
   }
 
   &.active {
@@ -38,7 +38,7 @@
 
   .library-title {
     margin-bottom: 1rem;
-    margin-left: calc($padding-wrapper + $padding-header - $padding-left);
+    margin-left: calc($padding-wrapper + $padding-header * 2 - $padding-left);
     color: $secondary;
     font-size: 1.25rem;
     font-weight: 500;

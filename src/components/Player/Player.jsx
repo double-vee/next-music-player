@@ -30,6 +30,7 @@ export default function Player() {
         }
       >
         <Nav
+          audioRef={audioRef}
           libraryStatus={libraryStatus}
           setLibraryStatus={setLibraryStatus}
         />
