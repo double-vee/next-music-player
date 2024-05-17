@@ -3,11 +3,9 @@ import { RxCross1 } from 'react-icons/rx';
 import LibraryItem from '@/components/LibraryItem/LibraryItem';
 
 export default function Library({
-  audioRef,
   tracks,
   setTracks,
   setCurrentTrack,
-  isPlaying,
   libraryStatus,
   setLibraryStatus,
 }) {
@@ -29,12 +27,10 @@ export default function Library({
         {tracks.map((track) => (
           <LibraryItem
             key={track.id}
-            audioRef={audioRef}
             track={track}
             tracks={tracks}
             setTracks={setTracks}
             setCurrentTrack={setCurrentTrack}
-            isPlaying={isPlaying}
           />
         ))}
       </ul>

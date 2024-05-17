@@ -1,19 +1,13 @@
 import Image from 'next/image';
 
 export default function LibraryItem({
-  audioRef,
   track,
   tracks,
   setTracks,
   setCurrentTrack,
-  isPlaying,
 }) {
-  const selectTrack = async () => {
-    await setCurrentTrack({ ...track, active: true });
-
-    if (isPlaying) {
-      audioRef.current.play();
-    }
+  const selectTrack = () => {
+    setCurrentTrack({ ...track, active: true });
 
     const nextTracks = tracks.map((item) => {
       if (item.id === track.id) {

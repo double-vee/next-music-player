@@ -1,5 +1,3 @@
-'use client';
-
 import { forwardRef } from 'react';
 
 function Audio({ ...rest }, ref) {

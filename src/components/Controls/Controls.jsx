@@ -1,9 +1,8 @@
-'use client';
 import { RxPlay, RxPause, RxTrackNext, RxTrackPrevious } from 'react-icons/rx';
 import { useEffect, useState } from 'react';
 
 import Audio from '@/components/Audio/Audio';
-import { formatTime } from '@/helpers/helpers';
+import { formatTime } from '@/helpers/functions';
 
 export default function Controls({
   audioRef,
@@ -26,7 +25,7 @@ export default function Controls({
     setTimeData((prev) => ({ ...prev, duration }));
   }, [audioRef]);
 
-  const play = () => {
+  const togglePlay = () => {
     if (!isPlaying) {
       audioRef.current.play();
     } else {
@@ -34,6 +33,12 @@ export default function Controls({
     }
 
     setIsPlaying(!isPlaying);
+  };
+
+  const keepPlaying = () => {
+    if (isPlaying) {
+      audioRef.current.play();
+    }
   };
 
   const getActiveTrackIndex = () => {
@@ -50,7 +55,7 @@ export default function Controls({
     setTracks(nextTracks);
   };
 
-  const skipBack = async () => {
+  const skipBack = () => {
     let currentIndex = getActiveTrackIndex();
     let prevTrack;
 
@@ -60,26 +65,15 @@ export default function Controls({
       prevTrack = tracks[currentIndex - 1];
     }
 
-    await setCurrentTrack({ ...prevTrack, active: true });
-
-    if (isPlaying) {
-      audioRef.current.play();
-    }
-
+    setCurrentTrack({ ...prevTrack, active: true });
     updateTrackList(prevTrack);
   };
 
-  const skipForward = async () => {
+  const skipForward = () => {
     const currentIndex = getActiveTrackIndex();
-
     const nextTrack = tracks[(currentIndex + 1) % tracks.length];
 
-    await setCurrentTrack({ ...nextTrack, active: true });
-
-    if (isPlaying) {
-      audioRef.current.play();
-    }
-
+    setCurrentTrack({ ...nextTrack, active: true });
     updateTrackList(nextTrack);
   };
 
@@ -92,14 +86,17 @@ export default function Controls({
       progress = Math.floor((currentTime / duration) * 100);
     }
 
-    console.log(duration, currentTime, progress);
-
     setTimeData({
       ...timeData,
       currentTime,
       duration,
       progress,
     });
+  };
+
+  const handleLoadedMetadata = (e) => {
+    updateTime(e);
+    keepPlaying();
   };
 
   const setTime = (e) => {
@@ -143,7 +140,7 @@ export default function Controls({
         </button>
         <button
           className="btn play"
-          onClick={play}
+          onClick={togglePlay}
         >
           {isPlaying ? <RxPause /> : <RxPlay />}
         </button>
@@ -155,11 +152,12 @@ export default function Controls({
         </button>
       </div>
       <Audio
+        preload="metadata"
         src={currentTrack.audio}
         ref={audioRef}
-        onEnded={() => setIsPlaying(false)}
+        onEnded={skipForward}
         onTimeUpdate={updateTime}
-        onLoadedMetadata={updateTime}
+        onLoadedMetadata={handleLoadedMetadata}
       />
     </div>
   );

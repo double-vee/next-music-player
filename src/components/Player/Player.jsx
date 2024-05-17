@@ -50,11 +50,9 @@ export default function Player() {
         </main>
       </AppWrapper>
       <Library
-        audioRef={audioRef}
         tracks={tracks}
         setTracks={setTracks}
         setCurrentTrack={setCurrentTrack}
-        isPlaying={isPlaying}
         libraryStatus={libraryStatus}
         setLibraryStatus={setLibraryStatus}
       />
