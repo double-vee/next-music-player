@@ -1,6 +1,11 @@
 import Image from 'next/image';
+import { useContext } from 'react';
 
-export default function Track({ currentTrack }) {
+import { AudioContext } from '@/providers/AudioProvider';
+
+export default function Track() {
+  const { currentTrack } = useContext(AudioContext);
+
   return (
     <div className="track-wrapper">
       <div className="image-wrapper">

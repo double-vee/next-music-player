@@ -1,11 +1,11 @@
 import Image from 'next/image';
+import { useContext } from 'react';
 
-export default function LibraryItem({
-  track,
-  tracks,
-  setTracks,
-  setCurrentTrack,
-}) {
+import { AudioContext } from '@/providers/AudioProvider';
+
+export default function LibraryItem({ track }) {
+  const { tracks, setTracks, setCurrentTrack } = useContext(AudioContext);
+
   const selectTrack = () => {
     setCurrentTrack({ ...track, active: true });
 

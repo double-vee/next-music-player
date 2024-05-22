@@ -1,14 +1,12 @@
 import { RxCross1 } from 'react-icons/rx';
+import { useContext } from 'react';
 
 import LibraryItem from '@/components/LibraryItem/LibraryItem';
+import { AudioContext } from '@/providers/AudioProvider';
 
-export default function Library({
-  tracks,
-  setTracks,
-  setCurrentTrack,
-  libraryStatus,
-  setLibraryStatus,
-}) {
+export default function Library({ libraryStatus, setLibraryStatus }) {
+  const { tracks } = useContext(AudioContext);
+
   return (
     <aside className={`library ${libraryStatus ? 'active' : ''}`}>
       <header className="library-header">
@@ -28,9 +26,6 @@ export default function Library({
           <LibraryItem
             key={track.id}
             track={track}
-            tracks={tracks}
-            setTracks={setTracks}
-            setCurrentTrack={setCurrentTrack}
           />
         ))}
       </ul>

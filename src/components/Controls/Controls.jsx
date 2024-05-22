@@ -1,18 +1,21 @@
 import { RxPlay, RxPause, RxTrackNext, RxTrackPrevious } from 'react-icons/rx';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
+import { AudioContext } from '@/providers/AudioProvider';
 import Audio from '@/components/Audio/Audio';
 import { formatTime } from '@/helpers/functions';
 
-export default function Controls({
-  audioRef,
-  currentTrack,
-  setCurrentTrack,
-  tracks,
-  setTracks,
-  isPlaying,
-  setIsPlaying,
-}) {
+export default function Controls() {
+  const {
+    audioRef,
+    currentTrack,
+    setCurrentTrack,
+    tracks,
+    setTracks,
+    isPlaying,
+    setIsPlaying,
+  } = useContext(AudioContext);
+
   const [timeData, setTimeData] = useState({
     currentTime: 0,
     duration: 0,

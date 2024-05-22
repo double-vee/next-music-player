@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
-export default function Nav({ audioRef, libraryStatus, setLibraryStatus }) {
-  const [isMuted, setIsMuted] = useState(false);
+import { AudioContext } from '@/providers/AudioProvider';
+
+export default function Nav({ libraryStatus, setLibraryStatus }) {
+  const { audioRef, isMuted, setIsMuted } = useContext(AudioContext);
 
   const toggleMuted = () => {
     if (isMuted) {
