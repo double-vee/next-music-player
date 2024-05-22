@@ -129,18 +129,21 @@ export default function Controls() {
         <button
           className="btn skip-back"
           onClick={skipBack}
+          aria-label="Skip back"
         >
           <RxTrackPrevious />
         </button>
         <button
           className="btn play"
           onClick={togglePlay}
+          aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <RxPause /> : <RxPlay />}
         </button>
         <button
           className="btn skip-forward"
           onClick={skipForward}
+          aria-label="Skip forward"
         >
           <RxTrackNext />
         </button>

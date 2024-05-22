@@ -8,12 +8,16 @@ export default function Library({ libraryStatus, setLibraryStatus }) {
   const { tracks } = useContext(AudioContext);
 
   return (
-    <aside className={`library ${libraryStatus ? 'active' : ''}`}>
+    <aside
+      className={`library ${libraryStatus ? 'active' : ''}`}
+      aria-hidden={libraryStatus ? false : true}
+    >
       <header className="library-header">
         <h2 className="library-title">Tracks</h2>
         <button
           className="icon-wrapper"
           onClick={() => setLibraryStatus(false)}
+          aria-label="Close library"
         >
           <RxCross1 />
         </button>

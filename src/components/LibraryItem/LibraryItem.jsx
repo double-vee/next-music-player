@@ -4,11 +4,9 @@ import { useContext } from 'react';
 import { AudioContext } from '@/providers/AudioProvider';
 
 export default function LibraryItem({ track }) {
-  const { tracks, setTracks, setCurrentTrack } = useContext(AudioContext);
+  const { tracks, setTracks } = useContext(AudioContext);
 
   const selectTrack = () => {
-    // setCurrentTrack({ ...track, active: true });
-
     const nextTracks = tracks.map((item) => {
       if (item.id === track.id) {
         return { ...item, active: true };
