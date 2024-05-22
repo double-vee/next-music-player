@@ -6,15 +6,8 @@ import Audio from '@/components/Audio/Audio';
 import { formatTime } from '@/helpers/functions';
 
 export default function Controls() {
-  const {
-    audioRef,
-    currentTrack,
-    setCurrentTrack,
-    tracks,
-    setTracks,
-    isPlaying,
-    setIsPlaying,
-  } = useContext(AudioContext);
+  const { audioRef, currentTrack, tracks, setTracks, isPlaying, setIsPlaying } =
+    useContext(AudioContext);
 
   const [timeData, setTimeData] = useState({
     currentTime: 0,
@@ -68,7 +61,6 @@ export default function Controls() {
       prevTrack = tracks[currentIndex - 1];
     }
 
-    setCurrentTrack({ ...prevTrack, active: true });
     updateTrackList(prevTrack);
   };
 
@@ -76,7 +68,6 @@ export default function Controls() {
     const currentIndex = getActiveTrackIndex();
     const nextTrack = tracks[(currentIndex + 1) % tracks.length];
 
-    setCurrentTrack({ ...nextTrack, active: true });
     updateTrackList(nextTrack);
   };
 

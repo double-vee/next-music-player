@@ -8,11 +8,11 @@ export const AudioContext = createContext();
 
 export default function AudioProvider({ children }) {
   const [tracks, setTracks] = useState(data());
-  const [currentTrack, setCurrentTrack] = useState(tracks[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-
   const audioRef = useRef();
+
+  const currentTrack = tracks.find((item) => item.active === true);
 
   return (
     <AudioContext.Provider
@@ -21,7 +21,6 @@ export default function AudioProvider({ children }) {
         tracks,
         setTracks,
         currentTrack,
-        setCurrentTrack,
         isPlaying,
         setIsPlaying,
         isMuted,
