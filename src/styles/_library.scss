@@ -10,13 +10,16 @@
   bottom: 0;
   width: $library-width-s;
   padding-top: 0.5rem;
-  padding-left: $padding-left;
   background-color: $background-transparent;
   backdrop-filter: blur(4px);
   overflow-y: auto;
   scrollbar-color: $secondary transparent;
   transform: translateX(-100%);
   transition: transform 0.5s ease;
+
+  @include mixin.s {
+    padding-left: $padding-left;
+  }
 
   @include mixin.m {
     width: $library-width-m;
@@ -40,9 +43,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0 0.5rem
-      calc($padding-wrapper + $padding-header * 2 - $padding-left);
+    padding: 0 0.5rem 0.5rem 1.5rem;
     line-height: 1;
+
+    @include mixin.s {
+      padding: 0 0 0.5rem
+        calc($padding-wrapper + $padding-header * 2 - $padding-left);
+    }
 
     .library-title {
       color: $secondary;

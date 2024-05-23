@@ -1,8 +1,13 @@
 @use './variables' as *;
+@use './mixin.scss';
 
 .app-header {
-  padding: $padding-header;
+  padding-block: $padding-header;
   line-height: 1;
+
+  @include mixin.s {
+    padding: $padding-header;
+  }
 
   nav {
     display: flex;
@@ -11,8 +16,12 @@
     .title {
       margin-right: auto;
       padding-inline: $padding-header;
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       font-weight: 600;
+
+      @include mixin.s {
+        font-size: 1.25rem;
+      }
     }
 
     .btn-wrapper {

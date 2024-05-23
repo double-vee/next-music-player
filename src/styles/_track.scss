@@ -1,3 +1,5 @@
+@use './mixin.scss';
+
 .track-wrapper {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,11 @@
 
   .image-wrapper {
     margin-bottom: 2.5rem;
+    max-width: 260px;
+
+    @include mixin.s {
+      max-width: 290px;
+    }
 
     img {
       border-radius: 50%;

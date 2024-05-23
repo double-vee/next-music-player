@@ -5,8 +5,12 @@
   min-height: 100%;
   display: grid;
   gap: 1rem;
-  padding: $padding-wrapper;
+  padding: 1rem;
   transition: margin-left 0.5s ease;
+
+  @include mixin.s {
+    padding: $padding-wrapper;
+  }
 
   @include mixin.l {
     margin-left: $library-width-l;

@@ -27,7 +27,7 @@ export default function Player() {
           setLibraryStatus={setLibraryStatus}
         />
         <main>
-          <section>
+          <section className="main-section">
             <Track />
             <Controls />
           </section>

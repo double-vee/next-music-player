@@ -72,3 +72,8 @@ svg {
   border-radius: 20px;
   border: transparent;
 }
+
+.main-section {
+  width: min(100%, 32rem);
+  margin-inline: auto;
+}
