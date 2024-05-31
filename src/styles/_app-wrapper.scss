@@ -8,11 +8,15 @@
   padding: 1rem;
   transition: margin-left 0.5s ease;
 
-  @include mixin.s {
+  @include mixin.width_s {
     padding: $padding-wrapper;
   }
 
-  @include mixin.l {
+  @include mixin.width_l {
     margin-left: $library-width-l;
+  }
+
+  @include mixin.height_xs {
+    padding: 1rem;
   }
 }

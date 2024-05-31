@@ -1,23 +1,35 @@
-@mixin s {
+@mixin width_s {
   @media (min-width: 400px) {
     @content;
   }
 }
 
-@mixin m {
+@mixin width_m {
   @media (min-width: 550px) {
     @content;
   }
 }
 
-@mixin l {
+@mixin width_l {
   @media (min-width: 1100px) {
     @content;
   }
 }
 
-@mixin xl {
+@mixin width_xl {
   @media (min-width: 1500px) {
+    @content;
+  }
+}
+
+@mixin height_xs {
+  @media (height < 610px) {
+    @content;
+  }
+}
+
+@mixin height_s {
+  @media (height < 720px) {
     @content;
   }
 }

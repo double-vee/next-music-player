@@ -5,7 +5,7 @@
   padding-block: $padding-header;
   line-height: 1;
 
-  @include mixin.s {
+  @include mixin.width_s {
     padding: $padding-header;
   }
 
@@ -19,7 +19,11 @@
       font-size: 1.125rem;
       font-weight: 600;
 
-      @include mixin.s {
+      @include mixin.width_s {
+        font-size: 1.25rem;
+      }
+
+      @include mixin.height_xs {
         font-size: 1.25rem;
       }
     }

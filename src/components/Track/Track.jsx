@@ -17,8 +17,10 @@ export default function Track() {
           priority={true}
         />
       </div>
-      <h2>{currentTrack.title}</h2>
-      <h3>{currentTrack.artist}</h3>
+      <div className="description">
+        <h2>{currentTrack.title}</h2>
+        <h3>{currentTrack.artist}</h3>
+      </div>
     </div>
   );
 }

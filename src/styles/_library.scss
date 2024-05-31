@@ -17,15 +17,15 @@
   transform: translateX(-100%);
   transition: transform 0.5s ease;
 
-  @include mixin.s {
+  @include mixin.width_s {
     padding-left: $padding-left;
   }
 
-  @include mixin.m {
+  @include mixin.width_m {
     width: $library-width-m;
   }
 
-  @include mixin.l {
+  @include mixin.width_l {
     top: 0;
     width: $library-width-l;
     padding-top: 1.5rem;
@@ -46,7 +46,7 @@
     padding: 0 0.5rem 0.5rem 1.5rem;
     line-height: 1;
 
-    @include mixin.s {
+    @include mixin.width_s {
       padding: 0 0 0.5rem
         calc($padding-wrapper + $padding-header * 2 - $padding-left);
     }
@@ -101,7 +101,7 @@
       flex: 0 0 auto;
       width: 60px;
 
-      @include mixin.m {
+      @include mixin.width_m {
         width: 80px;
       }
 
